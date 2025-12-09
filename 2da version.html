@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Herbolaria</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        padding-bottom: 50px;
+    }
+
+    header {
+        background: #4CAF50;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    .section {
+        padding: 20px;
+        margin: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        color: #2E7D32;
+        margin-top: 0;
+    }
+
+    .plants {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+    }
+
+    .plant {
+        background: #e8f5e9;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .plant:hover {
+        background: #dcedc8;
+    }
+
+    .plant img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+
+    .info {
+        display: none;
+        background: #f1f8e9;
+        padding: 12px;
+        margin-top: 8px;
+        border-radius: 10px;
+        white-space: pre-line;
+    }
+</style>
+
+<script>
+    function toggleInfo(id) {
+        const info = document.getElementById(id);
+        info.style.display = info.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+</head>
+<body>
+
+<header>🌿 Guía de Herbolaria Mexicana</header>
+
+
+<!-- ===================================================== -->
+<!-- 🌬️ VÍAS RESPIRATORIAS -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🌬️ VÍAS RESPIRATORIAS</h2>
+    <p>(Tos, gripa, flemas, congestión nasal, bronquitis)</p>
+
+    <div class="plants">
+
+        <!-- EUCALIPTO -->
+        <div class="plant" onclick="toggleInfo('eucalipto')">
+            <img src="https://via.placeholder.com/150" alt="Eucalipto">
+            ⭐ Eucalipto
+        </div>
+        <div id="eucalipto" class="info">
+Cómo preparar: Hervir 5–8 hojas en 1 litro de agua.
+Cómo usar: Inhalar el vapor o beber en té.
+Por qué funciona: El eucaliptol abre vías respiratorias y ayuda a expulsar flema.
+        </div>
+
+        <!-- BUGAMBILIA -->
+        <div class="plant" onclick="toggleInfo('bugambilia')">
+            <img src="https://via.placeholder.com/150" alt="Bugambilia">
+            ⭐ Bugambilia
+        </div>
+        <div id="bugambilia" class="info">
+Cómo preparar: Hervir 8–10 flores en 1 taza de agua por 10 minutos y endulzar con miel.
+Cómo consumir: 2–3 veces al día.
+Por qué funciona: Actúa como expectorante y antiinflamatoria.
+        </div>
+
+        <!-- OREGANO OREJON -->
+        <div class="plant" onclick="toggleInfo('oregano')">
+            <img src="https://via.placeholder.com/150" alt="Orégano Orejón">
+            ⭐ Orégano orejón
+        </div>
+        <div id="oregano" class="info">
+Cómo preparar: Infusionar 1 cucharada en agua caliente por 10 minutos.
+Cómo consumir: Después de cada comida o en crisis de tos.
+Por qué funciona: El carvacrol combate bacterias y limpia vías respiratorias.
+        </div>
+
+        <!-- JENGIBRE -->
+        <div class="plant" onclick="toggleInfo('jengibre_resp')">
+            <img src="https://via.placeholder.com/150" alt="Jengibre">
+            ⭐ Jengibre
+        </div>
+        <div id="jengibre_resp" class="info">
+Cómo preparar: Hervir 3–4 rodajas en agua, agregar limón y miel.
+Cómo consumir: 1–2 veces al día.
+Por qué funciona: Sus gingeroles ayudan a expulsar flemas y reducen inflamación.
+        </div>
+
+        <!-- LIMON -->
+        <div class="plant" onclick="toggleInfo('limon_resp')">
+            <img src="https://via.placeholder.com/150" alt="Limón">
+            ⭐ Limón
+        </div>
+        <div id="limon_resp" class="info">
+Cómo preparar: Mezclar su jugo con agua tibia y miel.
+Cómo consumir: En gripa o por la mañana.
+Por qué funciona: La vitamina C refuerza el sistema inmune.
+        </div>
+
+        <!-- ANIS ESTRELLA -->
+        <div class="plant" onclick="toggleInfo('anis_resp')">
+            <img src="https://via.placeholder.com/150" alt="Anís">
+            ⭐ Anís estrella
+        </div>
+        <div id="anis_resp" class="info">
+Cómo preparar: Infusionar 1 estrella en 1 taza de agua 10 minutos.
+Cómo consumir: Después de comer o cuando haya tos fuerte.
+Por qué funciona: Relaja bronquios y facilita expulsar mucosidad.
+        </div>
+
+        <!-- VAPORUB -->
+        <div class="plant" onclick="toggleInfo('vaporub')">
+            <img src="https://via.placeholder.com/150" alt="Vaporub">
+            ⭐ Vaporub
+        </div>
+        <div id="vaporub" class="info">
+Cómo usar: Aplicar en pecho, espalda o inhalar en vaporizaciones.
+Por qué funciona: Sus aceites esenciales descongestionan rápidamente.
+        </div>
+
+        <!-- ZACATE LIMON -->
+        <div class="plant" onclick="toggleInfo('zacate_resp')">
+            <img src="https://via.placeholder.com/150" alt="Zacate Limón">
+            ⭐ Zacate limón
+        </div>
+        <div id="zacate_resp" class="info">
+Cómo preparar: Hervir el tallo 10 minutos.
+Cómo consumir: 1 taza dos veces al día.
+Por qué funciona: Actúa como antihistamínico y descongestiona.
+        </div>
+
+        <!-- GUAYABA -->
+        <div class="plant" onclick="toggleInfo('guayaba_resp')">
+            <img src="https://via.placeholder.com/150" alt="Guayaba Hojas">
+            ⭐ Guayaba (hojas)
+        </div>
+        <div id="guayaba_resp" class="info">
+Cómo preparar: Hervir 5 hojas en 1 litro de agua.
+Cómo consumir: Ideal para tos y gripe.
+Por qué funciona: Es antibacteriana y ayuda a expulsar flema.
+        </div>
+
+        <!-- ORQUIDEA -->
+        <div class="plant" onclick="toggleInfo('orquidea_resp')">
+            <img src="https://via.placeholder.com/150" alt="Orquídea">
+            ⭐ Orquídea (vainilla/aromáticas)
+        </div>
+        <div id="orquidea_resp" class="info">
+Es relajante, aromática y ayuda a respirar mejor en cuadros de estrés o ansiedad.
+        </div>
+
+    </div>
+
+    <!-- PRECAUCIONES -->
+    <h3>⚠ Precauciones</h3>
+    <p>Ruda: No usar en embarazo. Puede ser tóxica.  
+    Árnica: NO se ingiere.  
+    Planta de insulina: No sustituye tratamiento médico.</p>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 🌱 SISTEMA DIGESTIVO -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🌱 SISTEMA DIGESTIVO</h2>
+    <p>(Cólicos, gases, inflamación, indigestión, diarrea, digestión pesada)</p>
+
+    <div class="plants">
+
+        <!-- ALBAHACA -->
+        <div class="plant" onclick="toggleInfo('albahaca')">
+            <img src="https://via.placeholder.com/150" alt="Albahaca">
+            ⭐ Albahaca
+        </div>
+        <div id="albahaca" class="info">
+Cómo prepararla: Hervir 5–7 hojas frescas o 1 cucharadita seca por 5 minutos.
+Cómo consumir: Después de comidas pesadas o con cólico.
+Por qué funciona: Relaja los músculos del intestino y reduce gases.
+        </div>
+
+        <!-- HIERBABUENA -->
+        <div class="plant" onclick="toggleInfo('hierbabuena')">
+            <img src="https://via.placeholder.com/150" alt="Hierbabuena">
+            ⭐ Hierbabuena
+        </div>
+        <div id="hierbabuena" class="info">
+Cómo prepararla: Poner 6–8 hojas en agua caliente y reposar 10 minutos.
+Cómo consumir: Para náuseas o dolor estomacal.
+Por qué funciona: El mentol relaja el sistema digestivo.
+        </div>
+
+        <!-- MANZANILLA -->
+        <div class="plant" onclick="toggleInfo('manzanilla')">
+            <img src="https://via.placeholder.com/150" alt="Manzanilla">
+            ⭐ Manzanilla
+        </div>
+        <div id="manzanilla" class="info">
+Cómo prepararla: 1 cucharada en agua caliente por 10 minutos.
+Cómo consumir: 1–2 tazas al día.
+Por qué funciona: Es antiinflamatoria y protege el estómago.
+        </div>
+
+        <!-- HOJA SANTA -->
+        <div class="plant" onclick="toggleInfo('hojasanta')">
+            <img src="https://via.placeholder.com/150" alt="Hoja Santa">
+            ⭐ Hoja santa
+        </div>
+        <div id="hojasanta" class="info">
+Cómo prepararla: Hervir 1 hoja grande por 7 minutos.
+Cómo consumir: Para gases o inflamación.
+Por qué funciona: Reduce gases y mejora digestión.
+        </div>
+
+        <!-- CANELA -->
+        <div class="plant" onclick="toggleInfo('canela_dig')">
+            <img src="https://via.placeholder.com/150" alt="Canela">
+            ⭐ Canela
+        </div>
+        <div id="canela_dig" class="info">
+Cómo prepararla: Hervir 1 raja por 10 minutos.
+Cómo consumir: Antes de comidas.
+Por qué funciona: Estimula enzimas digestivas.
+        </div>
+
+        <!-- CLAVO -->
+        <div class="plant" onclick="toggleInfo('clavo')">
+            <img src="https://via.placeholder.com/150" alt="Clavo">
+            ⭐ Clavo de olor
+        </div>
+        <div id="clavo" class="info">
+Cómo prepararla: Hervir 2–3 clavos por 8 minutos.
+Cómo consumir: Para náuseas o dolor estomacal.
+Por qué funciona: Disminuye inflamación.
+        </div>
+
+        <!-- CURCUMA -->
+        <div class="plant" onclick="toggleInfo('curcuma')">
+            <img src="https://via.placeholder.com/150" alt="Cúrcuma">
+            ⭐ Cúrcuma
+        </div>
+        <div id="curcuma" class="info">
+Cómo prepararla: Mezclar ½ cucharadita en agua, leche o té.
+Cómo consumir: 1 vez al día.
+Por qué funciona: Protege el estómago y desinflama.
+        </div>
+
+        <!-- ROMERO -->
+        <div class="plant" onclick="toggleInfo('romero_dig')">
+            <img src="https://via.placeholder.com/150" alt="Romero">
+            ⭐ Romero
+        </div>
+        <div id="romero_dig" class="info">
+Cómo prepararla: Hervir 1 ramita por 10 minutos.
+Cómo consumir: Para digestión pesada.
+Por qué funciona: Aumenta producción de bilis.
+        </div>
+
+        <!-- BARQUILLA -->
+        <div class="plant" onclick="toggleInfo('barquilla')">
+            <img src="https://via.placeholder.com/150" alt="Barquilla">
+            ⭐ Barquilla
+        </div>
+        <div id="barquilla" class="info">
+Cómo prepararla: Hervir un puñito por 10 minutos.
+Cómo consumir: Una vez al día.
+Por qué funciona: Depura y desinflama.
+        </div>
+
+        <!-- GUAYABA -->
+        <div class="plant" onclick="toggleInfo('guayaba_dig')">
+            <img src="https://via.placeholder.com/150" alt="Guayaba Hojas">
+            ⭐ Guayaba (hojas)
+        </div>
+        <div id="guayaba_dig" class="info">
+Cómo prepararla: Hervir 5 hojas en 1 litro de agua.
+Cómo consumir: Después de comer o para diarrea ligera.
+Por qué funciona: Controla diarrea y desinflama.
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 😴 RELAJANTES / ANSIEDAD / INSOMNIO -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>😴 RELAJANTES / ANSIEDAD / INSOMNIO</h2>
+
+    <div class="plants">
+
+        <!-- TILA -->
+        <div class="plant" onclick="toggleInfo('tila')">
+            <img src="https://via.placeholder.com/150" alt="Tila">
+            ⭐ Flor de tila
+        </div>
+        <div id="tila" class="info">
+Cómo prepararla: Infusionar 1 cucharadita por 5–7 minutos.
+Cómo consumir: Una taza por la noche.
+Por qué funciona: Tiene efecto sedante natural.
+        </div>
+
+        <!-- VALERIANA -->
+        <div class="plant" onclick="toggleInfo('valeriana')">
+            <img src="https://via.placeholder.com/150" alt="Valeriana">
+            ⭐ Valeriana
+        </div>
+        <div id="valeriana" class="info">
+Cómo prepararla: Hervir 1 cucharadita de raíz por 10 minutos.
+Cómo consumir: 30 minutos antes de dormir.
+Por qué funciona: Reduce actividad del sistema nervioso.
+        </div>
+
+        <!-- ZACATE LIMON -->
+        <div class="plant" onclick="toggleInfo('zacate_rel')">
+            <img src="https://via.placeholder.com/150" alt="Zacate Limón">
+            ⭐ Zacate limón
+        </div>
+        <div id="zacate_rel" class="info">
+Cómo prepararla: Hervir 1 tallo por 12 minutos.
+Cómo consumir: Por la noche.
+Por qué funciona: Relaja músculos y mente.
+        </div>
+
+        <!-- MANZANILLA/ALBAHACA -->
+        <div class="plant" onclick="toggleInfo('manza_alba')">
+            <img src="https://via.placeholder.com/150" alt="Manzanilla y Albahaca">
+            ⭐ Manzanilla / Albahaca
+        </div>
+        <div id="manza_alba" class="info">
+Cómo prepararlas: Infusión suave.
+Cómo consumir: De noche.
+Por qué funciona: Bajan ansiedad y relajan.
+        </div>
+
+        <!-- ORQUIDEA -->
+        <div class="plant" onclick="toggleInfo('orquidea_rel')">
+            <img src="https://via.placeholder.com/150" alt="Orquídea">
+            ⭐ Orquídea (relajante)
+        </div>
+        <div id="orquidea_rel" class="info">
+Cómo prepararla: Infusionar pétalos o raíces suaves 5–7 minutos.
+Cómo consumir: Por la noche.
+Por qué funciona: Calma la mente y reduce ansiedad.
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 🔥 ANTIINFLAMATORIAS / DOLOR -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🔥 ANTIINFLAMATORIAS / DOLOR</h2>
+
+    <div class="plants">
+
+        <!-- ARNICA -->
+        <div class="plant" onclick="toggleInfo('arnica')">
+            <img src="https://via.placeholder.com/150" alt="Árnica">
+            ⭐ Árnica (solo uso externo)
+        </div>
+        <div id="arnica" class="info">
+Cómo prepararla: Machacar la flor con agua tibia o usar pomada.
+Cómo usar: Aplicar en golpes o moretones.
+Por qué funciona: Reduce inflamación y dolor.
+        </div>
+
+        <!-- COMBO -->
+        <div class="plant" onclick="toggleInfo('combo')">
+            <img src="https://via.placeholder.com/150" alt="Romero Jengibre Cúrcuma">
+            ⭐ Romero, Jengibre y Cúrcuma
+        </div>
+        <div id="combo" class="info">
+Preparación: Como té o aceite infusionado.
+Cómo usar: En té o masajes.
+Por qué funciona: Ricos en antioxidantes y antiinflamatorios.
+        </div>
+
+        <!-- CHACLOCO / CAÑA -->
+        <div class="plant" onclick="toggleInfo('chacloco')">
+            <img src="https://via.placeholder.com/150" alt="Chacloco">
+            ⭐ Chacloco y Caña de jabalí
+        </div>
+        <div id="chacloco" class="info">
+Cómo prepararlas: Infusión o cataplasma caliente.
+Cómo usar: Aplicar o beber.
+Por qué funciona: Desinflaman tejidos.
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 🩸 REGULADORAS DE AZÚCAR -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🩸 REGULADORAS DE AZÚCAR</h2>
+
+    <div class="plants">
+
+        <!-- INSULINA -->
+        <div class="plant" onclick="toggleInfo('insulina')">
+            <img src="https://via.placeholder.com/150" alt="Planta de Insulina">
+            ⭐ Planta de insulina
+        </div>
+        <div id="insulina" class="info">
+Cómo prepararla: Hervir una hoja en 1 taza de agua.
+Cómo consumir: Una taza diaria, con supervisión médica.
+Por qué funciona: Ayuda a regular glucosa.
+        </div>
+
+        <!-- CANELA -->
+        <div class="plant" onclick="toggleInfo('canela_az')">
+            <img src="https://via.placeholder.com/150" alt="Canela">
+            ⭐ Canela
+        </div>
+        <div id="canela_az" class="info">
+Cómo prepararla: Hervir 1 raja por 10 minutos.
+Cómo consumir: Después del desayuno.
+Por qué funciona: Mejora absorción de glucosa.
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 🧴 PARA LA PIEL -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🧴 PARA LA PIEL</h2>
+    <p>(Heridas, irritación, quemaduras, resequedad)</p>
+
+    <div class="plants">
+
+        <!-- SABILA -->
+        <div class="plant" onclick="toggleInfo('sabila')">
+            <img src="https://via.placeholder.com/150" alt="Sábila">
+            ⭐ Sábila (Aloe vera)
+        </div>
+        <div id="sabila" class="info">
+Cómo prepararla: Extraer gel interior.
+Cómo usar: Aplicar directamente en la piel.
+Por qué funciona: Regenera y humecta.
+        </div>
+
+        <!-- ARANTO / ARNICA / CHACLOCO -->
+        <div class="plant" onclick="toggleInfo('aranto')">
+            <img src="https://via.placeholder.com/150" alt="Aranto">
+            ⭐ Aranto / Árnica / Chacloco
+        </div>
+        <div id="aranto" class="info">
+Cómo prepararlas: Machacar hojas o flores y aplicar.
+Cómo usar: En heridas pequeñas o quemaduras leves.
+Por qué funciona: Son antimicrobianas y cicatrizantes.
+        </div>
+    </div>
+</div>
+
+
+
+<!-- ===================================================== -->
+<!-- 🧹 DEPURATIVAS / DIURÉTICAS -->
+<!-- ===================================================== -->
+<div class="section">
+    <h2>🧹 DEPURATIVAS / DIURÉTICAS</h2>
+
+    <div class="plants">
+
+        <div class="plant" onclick="toggleInfo('depurativas')">
+            <img src="https://via.placeholder.com/150" alt="Depurativas">
+            ⭐ Caña de jabalí / Limón / Barquilla
+        </div>
+        <div id="depurativas" class="info">
+Cómo preparar: Hervir en 1 litro de agua por 10 minutos.
+Cómo consumir: 1 taza en ayunas o por la tarde.
+Por qué funcionan: Limpian riñones y reducen inflamación.
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

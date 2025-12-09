@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PLANTAS MEDICINALES EN MEXICO</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--accent:#10b981;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;background:linear-gradient(180deg,#071227 0%, #041021 100%);color:#e6eef8;min-height:100vh}
+    header{padding:28px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:4px 0 0;color:var(--muted)}
+
+    main{padding:20px}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+    .search{flex:1;min-width:220px}
+    input[type=text]{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit}
+    .sections{display:grid;gap:28px}
+    .section{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:14px;border-radius:12px}
+    .section h2{margin:0 0 12px;font-size:16px}
+
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .18s ease, box-shadow .18s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .card img{display:block;width:100%;height:120px;object-fit:cover}
+    .card .meta{padding:8px}
+    .card .meta h3{margin:0;font-size:14px}
+    .card .meta p{margin:6px 0 0;font-size:12px;color:var(--muted)}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;padding:18px}
+    .modal{width:100%;max-width:820px;background:linear-gradient(180deg,#071427, #061225);border-radius:12px;padding:18px;box-shadow:0 20px 60px rgba(2,6,23,0.7);}
+    .modal header{display:flex;gap:12px;align-items:center}
+    .modal img{width:160px;height:120px;object-fit:cover;border-radius:8px}
+    .modal .info{flex:1}
+    .modal h3{margin:0}
+    .modal .body{margin-top:12px}
+    .close-btn{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px}
+
+    footer{padding:18px 20px;color:var(--muted);font-size:13px}
+
+    @media (max-width:720px){.modal img{width:100%;height:180px}}
+  </style>
+</head>
+<body>
+  <header>
+<div class="logo">
+<img src="pokemon.jpeg" alt="logo" style="width:48px;height:48px;border-radius:10px;object-fit:cover;">
+<div>
+        <h1>PLANTAS MEDICINALES EN MEXICO</h1>
+        <p class="lead">aqui va la introduccion.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="controls">
+      <div class="search"><input id="search" type="text" placeholder="Buscar planta o uso (ej. digestivo, relajante)"></div>
+      <div><select id="sectionFilter"><option value="all">Todas las secciones</option></select></div>
+    </div>
+
+    <div id="sections" class="sections"></div>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+    <div class="modal" role="document">
+      <header>
+        <img id="modalImg" src="" alt="">
+        <div class="info">
+          <h3 id="modalTitle"></h3>
+        </div>
+        <button aria-label="Cerrar" class="close-btn" id="closeModal">✕</button>
+      </header>
+      <div class="body">
+        <p id="modalInfo"></p>
+      </div>
+    </div>
+  </div>
+
+  
+
+<script>
+
+
+const data = {
+sections: [
+
+
+/* 🌬 VÍAS RESPIRATORIAS */
+
+{
+  id:"vias",
+  title:"🌬 VÍAS RESPIRATORIAS",
+  plants:[
+    {
+      id:"eucalipto",
+      name:"Eucalipto",
+      image:"Eucalipto.jpg",
+      info:`Cómo preparar: Hervir 5–8 hojas en 1 litro de agua.
+      Cómo usar: Inhalar el vapor o beber en té.
+Por qué funciona: El eucaliptol abre vías respiratorias y ayuda a expulsar flema.`
+    },
+    
+    {
+      id:"bugambilia",
+      name:"Bugambilia",
+      image:"bugambilia.png",
+      info:`Cómo preparar: Hervir 8–10 flores en 1 taza de agua por 10 minutos y endulzar con miel.
+Cómo consumir: 2–3 veces al día.
+Por qué funciona: Actúa como expectorante y antiinflamatoria.`
+    },
+
+    {
+      id:"oregano",
+      name:"Orégano orejón",
+      image:"oregano.JPG",
+      info:`Cómo preparar: Infusionar 1 cucharada en agua caliente por 10 minutos.
+Cómo consumir: Después de cada comida o en crisis de tos.
+Por qué funciona: El carvacrol combate bacterias y limpia vías respiratorias.`
+    },
+
+    {
+      id:"jengibre_v",
+      name:"jengibre",
+      image:"jengibre.jpg",
+      info:`Cómo preparar: Hervir 3–4 rodajas en agua, agregar limón y miel.
+Cómo consumir: 1–2 veces al día.
+Por qué funciona: Sus gingeroles ayudan a expulsar flemas y reducen inflamación.`
+    },
+
+    {
+      id:"limon_vias",
+      name:"Limón",
+      image:"limon.jpeg",
+      info:`Cómo preparar: Mezclar su jugo con agua tibia y miel.
+Cómo consumir: En gripa o por la mañana.
+Por qué funciona: La vitamina C refuerza el sistema inmune.`
+    },
+
+    {
+      id:"anis_v",
+      name:"Anís estrella",
+      image:"anis.jpg",
+      info:`Cómo preparar: Infusionar 1 estrella en 1 taza de agua 10 minutos.
+Cómo consumir: Después de comer o cuando haya tos fuerte.
+Por qué funciona: Relaja bronquios y facilita expulsar mucosidad.`
+    },
+
+    {
+      id:"vaporub",
+      name:"Vaporub",
+      image:"vaporub.jpeg",
+      info:`Cómo usar: Aplicar en pecho, espalda o inhalar en vaporizaciones.
+Por qué funciona: Sus aceites esenciales descongestionan rápidamente.`
+    },
+
+    {
+      id:"zacate_limon_v",
+      name:"Zacate limón",
+      image:"Zacatelimon.png",
+      info:`Cómo preparar: Hervir el tallo 10 minutos.
+Cómo consumir: 1 taza dos veces al día.
+Por qué funciona: Actúa como antihistamínico y descongestiona.`
+    }
+  ]
+},
+
+
+/* 🌱 SISTEMA DIGESTIVO */
+
+{
+  id:"digestivo",
+  title:"🌱 SISTEMA DIGESTIVO",
+  plants:[
+    {
+      id:"albahaca",
+      name:"Albahaca",
+      image:"vaca.jpeg",
+      info:`Cómo prepararla: Hervir 5–7 hojas frescas o 1 cucharadita seca en 1 taza de agua por 5 minutos. Reposar y colar.
+Cómo consumir: Tomar tibio después de las comidas pesadas o cuando haya cólico.
+Por qué funciona: Relaja el intestino, reduce espasmos y gases.`
+    },
+    {
+      id:"hierbabuena",
+      name:"Hierbabuena",
+      image:"buena.jpg",
+      info:`Cómo prepararla: Poner 6–8 hojas en agua caliente. Tapar y dejar reposar 10 minutos.
+Cómo consumir: Tomar 1 taza cuando haya dolor o indigestión.
+Por qué funciona: El mentol relaja el sistema digestivo.`
+    },
+    {
+      id:"manzanilla",
+      name:"Manzanilla",
+      image:"manza.jpeg",
+      info:`Cómo prepararla: 1 cucharada de flores en agua casi hirviendo; reposar 10 min.
+Cómo consumir: 1–2 tazas al día.
+Por qué funciona: Anti inflamatoria, calma espasmos y protege el estómago.`
+    },
+    {
+      id:"hoja_santa",
+      name:"Hoja Santa",
+      image:"santa.jpg",
+      info:`Cómo prepararla: Hervir 1 hoja grande por 7 minutos.
+Cómo consumir: Tomar tibio.
+Por qué funciona: Reduce gases y mejora digestión.`
+    },
+    {
+      id:"canela",
+      name:"Canela",
+      image:"canela.jpeg",
+      info:`Cómo prepararla: Hervir 1 raja en 1 taza de agua por 10 minutos.
+Cómo consumir: Antes de comidas o de noche.
+Por qué funciona: Estimula enzimas digestivas.`
+    },
+    {
+      id:"clavo",
+      name:"Clavo de olor",
+      image:"clavo.jpg",
+      info:`Cómo prepararla: Hervir 2–3 clavos durante 8 minutos.
+Cómo consumir: Tibio para náuseas.
+Por qué funciona: Reduce inflamación y mejora digestión.`
+    },
+    {
+      id:"curcuma",
+      name:"Cúrcuma",
+      image:"curcu.jpeg",
+      info:`Cómo prepararla: ½ cucharadita en agua, leche o té.
+Cómo consumir: 1 vez al día.
+Por qué funciona: Protege el estómago y reduce inflamación.`
+    },
+    {
+      id:"romero_d",
+      name:"Romero",
+      image:"romero.jpg",
+      info:`Cómo prepararla: Hervir 1 ramita 10 min.
+Cómo consumir: 1 vez al día para digestión pesada.
+Por qué funciona: Aumenta bilis y mejora digestión de grasas.`
+    },
+    {
+      id:"barquilla",
+      name:"Barquilla",
+      image:"barq.jpeg",
+      info:`Cómo prepararla: Hervir un puñito 10 min.
+Cómo consumir: 1 vez al día.
+Por qué funciona: Desinflama y depura el sistema digestivo.`
+    },
+    {
+      id:"guayaba",
+      name:"Guayaba (Hojas)",
+      image:"gua.jpg",
+      info:`Cómo prepararla: Hervir 5 hojas 10 min.
+Cómo consumir: Después de comer o para diarrea ligera.
+Por qué funciona: Controla diarrea, desinflama y mejora digestión.`
+    }
+  ]
+},
+
+
+/* 😴 RELAJANTES / INSOMNIO */
+
+{
+  id:"relajantes",
+  title:"😴 RELAJANTES / INSOMNIO",
+  plants:[
+    {
+      id:"tila",
+      name:"Flor de Tila",
+      image:"tila.jpg",
+      info:`Cómo prepararla: Infusionar 1 cdta 5–7 min.
+Cómo consumir: Una taza por la noche.
+Por qué funciona: Sedante y relajante.`
+    },
+    {
+      id:"valeriana",
+      name:"Valeriana",
+      image:"valeriana.jpeg",
+      info:`Cómo prepararla: Hervir raíz 10 min.
+Cómo consumir: 30 min antes de dormir.
+Por qué funciona: Induce sueño profundo.`
+    },
+    {
+      id:"zacate_l",
+      name:"Zacate limón",
+      image:"Zacatelimon.png",
+      info:`Cómo prepararla: Hervir 1 tallo por 12 min.
+Cómo consumir: De noche.
+Por qué funciona: Relaja músculos y mente.`
+    },
+    {
+      id:"manzanilla_rel",
+      name:"Manzanilla / Albahaca",
+      image:"manza.jpeg",
+      info:`Cómo prepararlas: Infusión suave.
+Cómo consumir: De noche para relajación.
+Por qué funciona: Contienen aceites que bajan ansiedad.`
+    },
+    {
+      id:"orquidea",
+      name:"Orquídea (vainilla)",
+      image:"orquidea.jpg",
+      info:`Cómo prepararla: Infusionar pétalos o raíces 5–7 min.
+Cómo consumir: De noche para estrés o insomnio.
+Por qué funciona: Mucílagos y compuestos aromáticos que calman la mente.`
+    }
+  ]
+},
+
+
+/* 🔥 ANTIINFLAMATORIAS / DOLOR */
+
+{
+  id:"antiinflamatorias",
+  title:"🔥 ANTIINFLAMATORIAS / DOLOR",
+  plants:[
+    {
+      id:"arnica",
+      name:"Árnica (solo externo)",
+      image:"arni.jpeg",
+      info:`Cómo prepararla: Machacar la flor o usar pomada.
+Cómo usar: Aplicar en golpes o moretones.
+Por qué funciona: Reduce inflamación y dolor.`
+    },
+    {
+      id:"romero_jengibre_curcuma",
+      name:"Romero, Jengibre y Cúrcuma",
+      image:"curcu.jpeg",
+      info:`Preparación: Como té o aceite infusionado.
+Cómo usar: Té para dolor interno o masajes.
+Por qué funcionan: Antiinflamatorios naturales.`
+    },
+    {
+      id:"chacloco",
+      name:"Chacloco y Caña de jabalí",
+      image:"caña.jpeg",
+      info:`Cómo prepararlas: Infusión o cataplasma caliente.
+Cómo usar: Aplicar o beber.
+Por qué funcionan: Desinflaman y mejoran circulación.`
+    }
+  ]
+},
+
+
+/* 🩸 REGULADORAS DE AZÚCAR */
+
+{
+  id:"azucar",
+  title:"🩸 REGULADORAS DE AZÚCAR",
+  plants:[
+    {
+      id:"insulina",
+      name:"Planta de insulina",
+      image:"insu.jpeg",
+      info:`Cómo prepararla: Hervir una hoja en 1 taza de agua.
+Cómo consumir: Una taza diaria.
+Por qué funciona: Regula glucosa (no sustituye tratamiento médico).`
+    },
+    {
+      id:"canela_az",
+      name:"Canela",
+      image:"canela.jpeg",
+      info:`Cómo prepararla: Hervir 1 raja 10 min.
+Cómo consumir: Después del desayuno.
+Por qué funciona: Mejora absorción de glucosa.`
+    }
+  ]
+},
+
+
+/* 🧴 PIEL */
+
+{
+  id:"piel",
+  title:"🧴 PARA LA PIEL",
+  plants:[
+    {
+      id:"sabilla",
+      name:"Sábila (Aloe vera)",
+      image:"sabila.jpg",
+      info:`Cómo prepararla: Extraer gel de la hoja.
+Cómo usar: Aplicar directo en la piel.
+Por qué funciona: Regenera y humecta.`
+    },
+    {
+      id:"aranto",
+      name:"Aranto / Árnica / Chacloco",
+      image:"aranto.jpg",
+      info:`Cómo prepararlas: Machacar y aplicar como cataplasma.
+Cómo usar: En heridas pequeñas o quemaduras leves.
+Por qué funcionan: Antimicrobianas y cicatrizantes.`
+    }
+  ]
+},
+
+
+/* 🧹 DEPURATIVAS */
+
+{
+  id:"depurativas",
+  title:"🧹 DEPURATIVAS / DIURÉTICAS",
+  plants:[
+    {
+      id:"cana_j",
+      name:"Caña de jabalí / Limón / Barquilla",
+      image:"caña.jpeg",
+      info:`Cómo preparar: Hervir en 1 litro de agua 10 min.
+Cómo consumir: 1 taza en ayunas o tarde.
+Por qué funcionan: Limpian riñones y toxinas.`
+    }
+  ]
+}
+
+]
+};
+
+
+
+const sectionsEl = document.getElementById('sections');
+const filterEl = document.getElementById('sectionFilter');
+
+function renderSections(filter="all", search=""){
+  sectionsEl.innerHTML = "";
+  const q = search.toLowerCase();
+
+  data.sections.forEach(sec=>{
+    if(filter!=="all" && filter!==sec.id) return;
+
+    const results = sec.plants.filter(p=>
+      p.name.toLowerCase().includes(q) || p.info.toLowerCase().includes(q)
+    );
+
+    if(results.length===0) return;
+
+    const secEl = document.createElement("section");
+    secEl.className = "section";
+    secEl.innerHTML = `<h2>${sec.title}</h2>`;
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+
+    results.forEach(p=>{
+      const card = document.createElement("div");
+      card.className = "card";
+      card.dataset.pid = p.id;
+
+      card.innerHTML = `
+        <img src="${p.image}">
+        <div class="meta">
+          <h3>${p.name}</h3>
+        </div>
+      `;
+
+      card.onclick = () => openModal(p);
+      grid.appendChild(card);
+    });
+
+    secEl.appendChild(grid);
+    sectionsEl.appendChild(secEl);
+  });
+}
+
+filterEl.innerHTML += data.sections.map(s=>`<option value="${s.id}">${s.title}</option>`).join("");
+
+document.getElementById("search").addEventListener("input", e=>{
+  renderSections(filterEl.value, e.target.value);
+});
+
+filterEl.addEventListener("change", e=>{
+  renderSections(e.target.value, document.getElementById("search").value);
+});
+
+
+
+const backdrop = document.getElementById("modalBackdrop");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const modalInfo = document.getElementById("modalInfo");
+const closeModalBtn = document.getElementById("closeModal");
+
+function openModal(plant){
+  modalImg.src = plant.image;
+  modalTitle.textContent = plant.name;
+  modalInfo.textContent = plant.info;
+  backdrop.style.display = "flex";
+}
+
+closeModalBtn.onclick = ()=> backdrop.style.display="none";
+backdrop.onclick = e=>{ if(e.target===backdrop) backdrop.style.display="none"; };
+
+renderSections();
+</script>
+
+</body>
+</html>
